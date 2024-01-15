@@ -20,7 +20,19 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::get('/instructor/dashboard', function () {
+    return view('instructor.dashboard');
+})->middleware(['auth'])->name('instructor.dashboard');
+
+Route::get('/member/dashboard', function () {
+    return view('member.dashboard');
+})->middleware(['auth'])->name('member.dashboard');
+
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware(['auth'])->name('admin.dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
